@@ -15,3 +15,9 @@ app.listen(PORT, (error) => {
   }
   console.log(`My first Express app - listening on port ${PORT}!`);
 });
+
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.statusCode || 500).send(err.message)
+})
